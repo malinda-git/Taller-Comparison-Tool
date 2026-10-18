@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>HeightLine - Height Comparison Chart</title>
+<meta name="description" content="Compare the heights of people, celebrities, buildings and landmarks side by side at true scale. Switch between cm, metres and feet and inches, and measure the gap between any two.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>HeightLine</h1>
+    <p class="sub">Compare people, buildings and landmarks at true relative scale. Pick who is standing there, change the height or the unit, and the chart redraws.</p>
+  </header>
+
+  <div class="app">
+    <aside class="side">
+      <section class="card" aria-labelledby="h-add">
+        <div class="card-h"><h2 id="h-add">Add to the chart</h2></div>
+        <div class="tabs" id="tabs" role="tablist"></div>
+        <input id="q" type="search" placeholder="Search" aria-label="Search the list">
+        <div id="panel"></div>
+      </section>
+      <section class="card" aria-labelledby="h-chart">
+        <div class="card-h"><h2 id="h-chart">On the chart</h2><span class="note" id="count"></span></div>
+        <ul id="rows"></ul>
+      </section>
+    </aside>
+
+    <main class="main">
+      <div class="bar">
+        <div class="grp">
+          <span class="lbl">Unit</span>
+          <div class="seg" id="units" role="group" aria-label="Unit">
+            <button type="button" data-u="cm" aria-pressed="true">cm</button>
+            <button type="button" data-u="m" aria-pressed="false">m</button>
+            <button type="button" data-u="ftin" aria-pressed="false">ft + in</button>
+          </div>
+        </div>
+        <div class="grp">
+          <span class="lbl">Zoom</span>
+          <div class="seg" role="group" aria-label="Zoom">
+            <button type="button" id="zout" aria-label="Zoom out">&minus;</button>
+            <button type="button" id="zfit">Fit</button>
+            <button type="button" id="zin" aria-label="Zoom in">+</button>
+          </div>
+          <button class="btn" id="cmpbtn" type="button" aria-pressed="false">Compare</button>
+          <button class="btn" id="sort" type="button">Order: as added</button>
+          <button class="btn" id="clear" type="button">Clear all</button>
+        </div>
+      </div>
+      <p class="hint" id="hint" hidden>The heights differ a lot, so the smaller figures look tiny. Use Zoom + to get closer to the ground, and scroll up to see the top.</p>
+      <p class="hint" id="chint" hidden>Compare mode: click two figures on the chart, or two rows in the list, to measure the gap between them.</p>
+      <div class="stage"><div id="scroll"><div class="row">
+        <svg id="ruler" role="img" aria-label="Height ruler"></svg>
+        <svg id="chart" role="img" aria-label="Height comparison chart"></svg>
+      </div></div></div>
+      <section class="card info" id="cmp" aria-live="polite" hidden></section>
+      <section class="card info" id="info" aria-live="polite"></section>
+      <!-- Paste your AdSense ad unit inside this div, then remove the hidden attribute -->
+      <div class="ad" id="ad-slot" hidden></div>
+    </main>
+  </div>
+
+  <section class="guide" aria-labelledby="h-guide">
+    <h2 id="h-guide">How to use the height comparison chart</h2>
+    <p>Pick people, celebrities, buildings or everyday objects from the list and they appear side by side on one shared scale. Type a new height and the figure grows or shrinks straight away. Switch between centimetres, metres and feet and inches at any time.</p>
+    <h3>Measuring the difference between two heights</h3>
+    <p>Press Compare, then click two figures on the chart. A bracket appears between their heights and shows the gap, for example 150 cm against 160 cm gives a 10 cm difference. The panel under the chart repeats the gap in both metric and imperial units.</p>
+    <h3>Why do small figures look tiny next to tall buildings?</h3>
+    <p>Everything is drawn to the same scale. A building of 828 m is roughly 470 times taller than a person of 1.75 m, so the person becomes a thin mark at the bottom. Use Zoom to move closer to the ground, then scroll up to follow the building to its top.</p>
+    <h3>How accurate are the heights?</h3>
+    <p>Heights for celebrities are approximate values as commonly reported. Building details were compiled from public sources, and entries marked as basic details have not been fully checked. Always confirm important figures against an official source.</p>
+  </section>
+
+  <!--SITE-ONLY-->
+  <footer class="foot">
+    <span>&copy; HeightLine</span>
+    <nav aria-label="Site"><a href="about.html">About</a><a href="privacy.html">Privacy policy</a><a href="contact.html">Contact</a></nav>
+  </footer>
+  <!--/SITE-ONLY-->
+</div>
+<noscript>This tool needs JavaScript to draw the chart.</noscript>
+<script src="assets/app.js"></script>
+</body>
+</html>
